@@ -1,0 +1,35 @@
+service: default
+runtime: go             # AppEngine goを使用します
+api_version: go1        # AppEngine Go SDKのバージョン指定
+threadsafe: true
+
+default_expiration: "1d"
+
+handlers:
+
+# All URLs are handled by the Go application script
+- url: /
+  static_files: vue/dist/index.html
+  upload: vue/dist/index.html
+
+- url: /js
+  static_dir: vue/dist/js
+
+- url: /css
+  static_dir: vue/dist/css
+
+- url: /favicon.ico
+  static_files: vue/src/favicon.ico
+  upload: vue/src/favicon.ico
+
+- url: /.*              # アクセスされたら
+  script: _go_app       # Goプログラムを起動します
+
+skip_files:
+- ^vue/node_modules$
+- ^(.*/)?\.vue$
+- ^(.*/)?\LICENSE$
+- ^(.*/)?\package.json$
+- ^(.*/)?\README.md$
+- ^(.*/)?\vue.config.js$
+- ^(.*/)?\babel.config.js$
