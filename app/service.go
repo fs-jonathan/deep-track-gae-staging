@@ -8,15 +8,17 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
 )
 
 type Record struct {
-	Id       int    `json:"id"`
-	Title    string `json:"title"`
-	Subtitle string `json:"subtitle"`
-	Cost     int    `json:"cost"`
-	Compare  int    `json:"compare"`
-	Rate     int    `json:"rate"`
+	Id       int     `json:"id" datastore:"ID"`
+	Title    string  `json:"title" datastore:"title,noindex"`
+	Subtitle string  `json:"subtitle" datastore:"subtitle,noindex"`
+	Cost     float64 `json:"cost" datastore:"cost,noindex"`
+	Compare  float64 `json:"compare" datastore:"compare,noindex"`
+	Rate     float64 `json:"rate" datastore:"rate,noindex"`
 }
 
 type Message struct {
@@ -33,7 +35,8 @@ type FirebaseUser struct {
 
 func init() {
 	// 検証用
-	// e.GET("/app", jsonWriter)
+	e.GET("/get", getRecords)
+	e.GET("/set", setRecords)
 
 	// Route => handler
 	e.POST("/loginLiff", liffLogin)
@@ -104,4 +107,38 @@ func reactLogin(c echo.Context) error {
 	log.Println(user.UserId)
 
 	return c.NoContent(http.StatusOK)
+}
+
+func getRecords(c echo.Context) error {
+	ctx := appengine.NewContext(c.Request())
+
+	// The query type
+	query := datastore.NewQuery("Record").Order("ID")
+
+	var results []Record
+	if _, err := query.GetAll(ctx, &results); err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+
+	return c.JSON(http.StatusOK, results)
+}
+
+func setRecords(c echo.Context) error {
+	ctx := appengine.NewContext(c.Request())
+
+	records := getDefaultRecord()
+
+	keys := []*datastore.Key{
+		datastore.NewIncompleteKey(ctx, "Record", nil),
+		datastore.NewIncompleteKey(ctx, "Record", nil),
+		datastore.NewIncompleteKey(ctx, "Record", nil),
+		datastore.NewIncompleteKey(ctx, "Record", nil),
+		datastore.NewIncompleteKey(ctx, "Record", nil),
+	}
+
+	if _, err := datastore.PutMulti(ctx, keys, records); err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+
+	return c.JSON(http.StatusOK, records)
 }
