@@ -20,23 +20,71 @@ type DataStore struct {
 	Coverage   float64   `datastore:"coverage"`
 }
 
+type Report struct {
+	Id         int       `json:"id"`
+	Title      string    `json:"title"`
+	Subtitle   string    `json:"subtitle"`
+	Cost       int       `json:"cost"`
+	Compare    float64   `json:"compare"`
+	Rate       float64   `json:"rate"`
+	RecordDate time.Time `json:"recordDate"`
+}
+
 func init() {
 	// 検証用
 	e.GET("/get", getRecords)
 	e.GET("/set", setRecords)
 
+	e.POST("/getJson", getReport)
+	e.GET("/getReport", getReport)
+
 	rand.Seed(time.Now().UnixNano())
 }
 
 func randomFloat(min, max float64) float64 {
-	return rand.Float64() * (max - min) + min
+	return rand.Float64()*(max-min) + min
+}
+
+func getReport(c echo.Context) error {
+	ctx := appengine.NewContext(c.Request())
+	var records []Report
+
+	// TODO: 日時範囲選択は後ほど対応、暫定1ヶ月のデータを利用します
+	// !!!: とりあえず日本語のみを想定します
+
+	// 本日
+	timeNow := time.Now()
+	timeYesterday := timeNow.Add(-24 * time.Hour)
+
+	reportToday := new(Report)
+	reportToday.Id = 1
+	reportToday.Title = "本日"
+	reportToday.Subtitle = "（現時点まで）"
+	reportToday.RecordDate = timeNow
+
+	todayQuery := datastore.NewQuery("DataStore").Filter("dateTime >", timeYesterday).Filter("dateTime <=", timeNow)
+
+	var results []DataStore
+	if _, err := todayQuery.GetAll(ctx, &results); err != nil {
+
+	}
+
+	var costToday int
+	for i := range results {
+		costToday = costToday + results[i].Revenue
+	}
+
+	reportToday.Cost = costToday
+	records = append(records, *reportToday)
+
+	return c.JSON(http.StatusOK, records)
 }
 
 func getDefaultData() []DataStore {
 	records := []DataStore{}
 	date := time.Now()
 
-	for i := 0; i < 20; i++ {
+	for i := 0; i < 31; i++ {
 		n := DataStore{date, rand.Intn(100), rand.Intn(200), rand.Intn(400), randomFloat(0, 1), randomFloat(0, 1), randomFloat(0, 1)}
 		records = append(records, n)
 

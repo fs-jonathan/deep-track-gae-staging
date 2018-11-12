@@ -24,7 +24,7 @@ type Message struct {
 
 func init() {
 	// Route => handler
-	e.POST("/getJson", jsonWriter)
+	e.POST("/getStaticJson", jsonWriter)
 }
 
 func jsonWriter(c echo.Context) error {
