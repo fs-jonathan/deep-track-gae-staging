@@ -1,7 +1,9 @@
 package app
 
 import (
+	"math/rand"
 	"net/http"
+	"time"
 
 	"github.com/labstack/echo"
 	"google.golang.org/appengine"
@@ -9,26 +11,37 @@ import (
 )
 
 type DataStore struct {
-	id       int     `json:"id" datastore:"ID"`
-	Title    string  `json:"title" datastore:"title,noindex"`
-	Subtitle string  `json:"subtitle" datastore:"subtitle,noindex"`
-	Cost     float64 `json:"cost" datastore:"cost,noindex"`
-	Compare  float64 `json:"compare" datastore:"compare,noindex"`
-	Rate     float64 `json:"rate" datastore:"rate,noindex"`
+	RecordDate time.Time `datastore:"dateTime"`
+	Revenue    int       `datastore:"revenue"`
+	PageView   int       `datastore:"pageView"`
+	ViewCount  int       `datastore:"viewCount"`
+	CtRate     float64   `datastore:"ctRate"`
+	ClickRate  float64   `datastore:"clickRate"`
+	Coverage   float64   `datastore:"coverage"`
 }
 
 func init() {
 	// 検証用
 	e.GET("/get", getRecords)
 	e.GET("/set", setRecords)
+
+	rand.Seed(time.Now().UnixNano())
+}
+
+func randomFloat(min, max float64) float64 {
+	return rand.Float64() * (max - min) + min
 }
 
 func getDefaultData() []DataStore {
-	s0 := []DataStore{DataStore{1, "本日（現時点まで）", "", 9, 8, 7}}
-	s1 := append(s0, DataStore{2, "昨日", "先週の同じ曜日との比較", 344, 43243, 43})
-	s2 := append(s1, DataStore{3, "今月（現時点まで）", "先週の同じ曜日との比較", 1, 0, 0})
-	s3 := append(s2, DataStore{4, "先月", "先々月との比較", 93, 83, 72})
-	records := append(s3, DataStore{5, "全期間", "", 20, 4, 434})
+	records := []DataStore{}
+	date := time.Now()
+
+	for i := 0; i < 20; i++ {
+		n := DataStore{date, rand.Intn(100), rand.Intn(200), rand.Intn(400), randomFloat(0, 1), randomFloat(0, 1), randomFloat(0, 1)}
+		records = append(records, n)
+
+		date = date.AddDate(0, 0, -1)
+	}
 
 	return records
 }
@@ -37,7 +50,7 @@ func getRecords(c echo.Context) error {
 	ctx := appengine.NewContext(c.Request())
 
 	// The query type
-	query := datastore.NewQuery("Record")
+	query := datastore.NewQuery("DataStore")
 
 	var results []DataStore
 	if _, err := query.GetAll(ctx, &results); err != nil {
@@ -51,13 +64,12 @@ func setRecords(c echo.Context) error {
 	ctx := appengine.NewContext(c.Request())
 
 	records := getDefaultData()
+	recordLength := len(records)
 
-	keys := []*datastore.Key{
-		datastore.NewIncompleteKey(ctx, "Record", nil),
-		datastore.NewIncompleteKey(ctx, "Record", nil),
-		datastore.NewIncompleteKey(ctx, "Record", nil),
-		datastore.NewIncompleteKey(ctx, "Record", nil),
-		datastore.NewIncompleteKey(ctx, "Record", nil),
+	keys := make([]*datastore.Key, recordLength)
+
+	for i := range keys {
+		keys[i] = datastore.NewIncompleteKey(ctx, "DataStore", nil)
 	}
 
 	if _, err := datastore.PutMulti(ctx, keys, records); err != nil {

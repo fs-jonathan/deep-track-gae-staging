@@ -16,8 +16,8 @@ type FirebaseUser struct {
 }
 
 func init() {
-  e.POST("/loginLiff", liffLogin)
-  e.POST("/loginReact", reactLogin)
+	e.POST("/loginLiff", liffLogin)
+	e.POST("/loginReact", reactLogin)
 }
 
 func liffLogin(c echo.Context) error {
