@@ -46,5 +46,8 @@ jobs:
               exit 1
             fi
       - run:
+          name: Authentication 2
+          command: appcfg.py --noauth_local_webserver update app
+      - run:
           name: Deploy to GAE
-          command: goapp deploy -oauth -application ${GCLOUD_PROJECT} -version ${GCLOUD_PROJECT_VERSION} app/app-engine.yaml
+          command: goapp deploy -oauth -application ${GCLOUD_PROJECT} -version ${GCLOUD_PROJECT_VERSION} app/app.yaml
