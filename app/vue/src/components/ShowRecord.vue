@@ -10,19 +10,7 @@
 
     <div style="display:none" id="content" v-if="results">
       <div v-for="(result, key, index) in results" :key="index">
-        <div class="bg-white hover:bg-grey-light m-3 max-w-sm shadow-md rounded-md overflow-hidden">
-          <div class="text-left p-1 sm:text-left sm:flex-grow">
-            <span class="text-sm leading-tight">{{ result.title }}</span>
-            <span class="text-xs leading-tight text-grey-dark sm:inline">{{ result.subtitle }}</span>
-          </div>
-          <div class="p-1">
-            <strong class="text-xl leading-tight">¥{{ result.cost }}</strong>
-          </div>
-          <div class="text-left sm:text-left sm:flex-grow p-1">
-            <img src="../assets/icon_arrow_right.png" class="w-2"/>
-            <span class="text-xs text-grey-dark m-1">¥{{ result.compare }}({{ result.rate }}%)</span>
-          </div>
-        </div>
+        <DetailRow :result="result" />
       </div>
     </div>
   </div>
@@ -30,6 +18,7 @@
 
 <script>
 import axios from 'axios';
+import DetailRow from './DetailRow'
 
 export default {
   name: 'ShowRecord',
@@ -38,6 +27,9 @@ export default {
     results: null,
     error: null
   }),
+  components: {
+    DetailRow,
+  },
   created () {
     // fetch the data when the view is created and the data is already being observed
     this.getJson(this.$route.params.index)
@@ -46,7 +38,7 @@ export default {
     getJson: function(id) {
       this.loading = true
 
-      axios.post('/getJson', { "message": id })
+      axios.post('/getDetail', { "message": id })
            .then(response => {
              this.results = response.data;
            })
