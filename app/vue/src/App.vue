@@ -20,7 +20,7 @@ import ShowRecord from './components/ShowRecord.vue'
 const router = new VueRouter({
   routes: [
     { path: '/login', component: Login },
-    { path: '/getRecord', component: GetRecord, props: { index: 0 } },
+    { path: '/getRecord', component: GetRecord },
     { path: '/showRecord/:index', name: 'ShowRecord', component: ShowRecord }
   ]
 })
