@@ -39,8 +39,8 @@ jobs:
           name: Google Authentication
           command: |
             if [ -n "${GCLOUD_SERVICE_KEY}" -a -n "${GCLOUD_PROJECT}" ]; then
-              echo ${GCLOUD_SERVICE_KEY} > ${HOME}/gcloud-service-key.json
-              echo "export GOOGLE_APPLICATION_CREDENTIALS=\"${HOME}/gcloud-service-key.json\"" >> $BASH_ENV
+              echo ${GCLOUD_SERVICE_KEY} > ${HOME}/${GCLOUD_PROJECT}.json
+              echo "export GOOGLE_APPLICATION_CREDENTIALS=\"${HOME}/${GCLOUD_PROJECT}.json\"" >> $BASH_ENV
             else
               echo "Not set environment"
               exit 1

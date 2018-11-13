@@ -2,7 +2,7 @@ service: default
 application: deep-track-staging
 version: 20181108t130217
 runtime: go             # AppEngine goを使用します
-api_version: go1        # AppEngine Go SDKのバージョン指定
+api_version: go1.9      # AppEngine Go SDKのバージョン指定
 threadsafe: true
 
 default_expiration: "1d"
