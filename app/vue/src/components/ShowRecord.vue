@@ -16,11 +16,7 @@
             <span class="text-xs leading-tight text-grey-dark sm:inline">{{ result.subtitle }}</span>
           </div>
           <div class="p-1">
-            <strong class="text-xl leading-tight">¥{{ result.cost }}</strong>
-          </div>
-          <div class="text-left sm:text-left sm:flex-grow p-1">
-            <img src="../assets/icon_arrow_right.png" class="w-2"/>
-            <span class="text-xs text-grey-dark m-1">¥{{ result.compare }}({{ result.rate }}%)</span>
+            <strong class="text-xl leading-tight">¥{{ result.cost.toFixed(2) }}</strong>
           </div>
         </div>
       </div>
@@ -46,7 +42,7 @@ export default {
     getJson: function(id) {
       this.loading = true
 
-      axios.post('/getJson', { "message": id })
+      axios.post('/getDetail', { "message": id })
            .then(response => {
              this.results = response.data;
            })

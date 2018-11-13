@@ -21,12 +21,12 @@ type DataStore struct {
 }
 
 type Report struct {
-	Id         int       `json:"id"`
-	Title      string    `json:"title"`				// TODO: 削除予定
-	Subtitle   string    `json:"subtitle"`		// TODO: 削除予定
-	Cost       float64   `json:"cost"`
-	Compare    float64   `json:"compare"`
-	Rate       float64   `json:"rate"`
+	Id       int     `json:"id"`
+	Title    string  `json:"title"`    // TODO: 削除予定
+	Subtitle string  `json:"subtitle"` // TODO: 削除予定
+	Cost     float64 `json:"cost"`
+	Compare  float64 `json:"compare"`
+	Rate     float64 `json:"rate"`
 }
 
 type DetailRequest struct {
@@ -62,11 +62,15 @@ func getDetail(c echo.Context) error {
 
 	// TODO: 暫定ですから、とりあえず計算やってなくて、一日のデータを表示します
 	timeDisplay := getRequestDay(message.Message)
-	query := datastore.NewQuery("DataStore").Filter("dateTime <=", timeDisplay).Limit(1)
+	query := datastore.NewQuery("DataStore").Filter("dateTime >", timeDisplay).Limit(1)
 
 	var results []DataStore
 	if _, err := query.GetAll(ctx, &results); err != nil {
 
+	}
+
+	if len(results) == 0 {
+		return echo.NewHTTPError(http.StatusBadRequest, "No Record")
 	}
 
 	result := results[0]

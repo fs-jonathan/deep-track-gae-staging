@@ -68,7 +68,7 @@ export default {
     getJson: function(id) {
       this.loading = true
 
-      axios.post('/getJson', { "message": id })
+      axios.post('/getReport')
            .then(response => {
              this.results = response.data;
            })
