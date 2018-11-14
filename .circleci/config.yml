@@ -19,10 +19,6 @@ jobs:
           command: mkdir -p /go/bin && curl -sL https://github.com/golang/dep/releases/download/v0.5.0/dep-linux-amd64 > /go/bin/dep && chmod +x /go/bin/dep
 
       - run:
-          name: decrypt keys
-          command: make decrypt
-
-      - run:
           name: fix goapp command
           command: |
             if [ ! -e /usr/lib/google-cloud-sdk/platform/google_appengine/google/appengine/tools/goroots.py ]; then
@@ -32,7 +28,7 @@ jobs:
 
       - deploy:
           command: |
-            export GOOGLE_APPLICATION_CREDENTIALS=`pwd`/.secret/secret-key.json
-            gcloud auth activate-service-account --key-file ./.secret/secret-key.json
+            export GOOGLE_APPLICATION_CREDENTIALS=`pwd`/.secret/secret-key.json.enc
+            gcloud auth activate-service-account --key-file ./.secret/secret-key.json.enc
             appcfg.py update --no_cookies --oauth2_access_token $(gcloud auth print-access-token 2> /dev/null) -A $GCLOUD_PROJECT -V ./app/
             gcloud config set project $GCLOUD_PROJECT
