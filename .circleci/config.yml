@@ -52,3 +52,10 @@ jobs:
             appcfg.py update --no_cookies --oauth2_access_token $(gcloud auth print-access-token 2> /dev/null) -A $GCLOUD_PROJECT -V ./app/app-engine.yaml
             gcloud --quiet config set project "$GCLOUD_PROJECT"
             goapp deploy --version $GCLOUD_PROJECT_VERSION app/app-engine.yaml
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build
+    - deploy
