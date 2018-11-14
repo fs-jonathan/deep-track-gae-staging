@@ -8,6 +8,10 @@ import (
 	"github.com/labstack/echo"
 )
 
+type Message struct {
+	Message int `json:"message"`
+}
+
 func createMux() *echo.Echo {
 	e := echo.New()
 
