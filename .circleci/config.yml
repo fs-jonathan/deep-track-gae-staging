@@ -22,5 +22,11 @@ jobs:
       - checkout
 
       # specify any bash command here prefixed with `run: `
-      - run: go get -v -t -d ...
+      - run:
+          commands: |
+            go get -v -t -d ...
+            gcloud components install app-engine-go
+            export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine
+            chmod +x /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine/goapp
+            goapp build ./app
       #- run: go test -v ...
