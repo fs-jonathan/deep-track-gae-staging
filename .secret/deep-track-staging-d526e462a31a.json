@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "deep-track-staging",
+  "private_key_id": "d526e462a31a739abedbe8a226d1fefcbf471083",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCaa9GdAxuIsHuE\nyobESKBxblE8hDBYzh1hPQ7cjIv3cCH8M/GQdNWBXy3Su4wD9PscSZ2jiqEApvXl\n2jy1vg+nxtnpPy7clTqD9j5/HXYlt1dUEW1wWA6NPtchUfQWvs6ffuN1S3lVrpX8\nLg/Y1NumgG7r1dnCAF/XBzqiXSK4TnY8VKcao9oKuvcV+qNI3n0NvG7SA2d6Jxqb\nBS2A48Nxu4hL+D5qXSYu0NU9dD1kFGNkAqmEo/tb29HGmhdjILIKFSATg27Xgq/V\nX+DQAtfEA+T3TkW8yVgQLHkkjvigf67DZJlLLsJayv6fksuKqs3eUAzrfPYznisD\nZKFVnJ3LAgMBAAECggEAAxUVioug1ZIm7Qgj4jAhmmddfMFAu80QHhGbcICSXKk4\nLHIW/M9a4am2NEd6bIEhMA0yIIJoY1HHL8Qy7l0cWo4oFF/7/frb6lK/KEdnb9T1\n4R+LQ9umHWCnPQAx80WcwedFAAw2daTgqTd8KSkFN2YckLLklVrvjs8TTGFii4jm\nx7foxN5jFESBqoxSdw8HPoXaT2Ws1gDjOipF91u1rFpDIyhucqNpVGDJCmKaIAhf\nzJBCywKO9JaqIXvCbkYdufIa9vLxUovXLB4yQMLveb17lv00YJ4DspO/nY78UmIJ\nih6cPHgHb/aJqtKlt8OiLBbBf3QTxK4A64+UqgnGhQKBgQDWjHTO7P1vTVJs96T7\nnYjFrntbblYdeALzcHTbiqZe3mdweZSyNRZVMi1vpnTzJFmQ2hlUiIeQXmKksZPR\nTK3/q1Dc7jiGzrVwlRnDejvRXzaeumNVkL5rNaxr1kqnL/hPPHxGuOgaPJLtLvwM\nXVHrOnZylFeZWpnO5YR4xbz9XwKBgQC4QXdQWFiS3ASFNyhIt0YAY3FQdk2lp+pQ\nHwSJWZ4oQc1TyPMRfpdqc7IGSUdmsi2Y2pc74gwun1qShTYKMumMS6/UcAh7AKYI\nbq3TLOfjQ9XrDNmUhj77va21ccP3ad7D/Cn5MGjr5RTRWELiUkwUbuV1P4R93qOR\n2sj9a79LFQKBgQCZ4Is2jksGtRJVDRjLTiV2grn+zZf98sFLEHD/tOW2TRUrWkgH\nuIOX/zEPTve6G2wRtBtOwc1ZAhkFvkciajixkpGgo0rvhPolEQs1ZEna1Ms79Lqh\n9/paslhDz6IjXwhc7CjGIIB3sNJAQt6Lj7LdX0Ts0PAzEQQXnA3zAP+XSQKBgFVL\naPI2k3oYg7cvW2SeAre3UQNQYI1o99zzHuR+Keq021oH0g2tLmbG/AhQ786oeNcj\niZLdB4qllgXxyJxcCSU6/EA5RJO8LyAELE9voEDibCqNHkPVCV775WfzLCZiSg8r\nsjp6oHdi6oomc3/VXQawd2QZbTnfUJT6VMSLllgpAoGAKctBjUdzA1kqTRToxcR6\nehRXxqZ4WNAbHzDKEKqspA2JzXMe/WeS4IDri+Hq3b/HjGUmaKKq4DI5IbFfQMy8\n0IRky6fonZ9G9U9OeG7+xRIk/fmGdB2gfH/nWSy/X9TM2TYOKyjqeylHgYExc4Xf\nlEQIBbLUMhgnqPZUyEFfb9w=\n-----END PRIVATE KEY-----\n",
+  "client_email": "deep-track-staging@appspot.gserviceaccount.com",
+  "client_id": "106115273453164291503",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/deep-track-staging%40appspot.gserviceaccount.com"
+}

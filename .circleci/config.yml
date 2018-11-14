@@ -28,7 +28,7 @@ jobs:
 
       - deploy:
           command: |
-            export GOOGLE_APPLICATION_CREDENTIALS=`pwd`/.secret/secret-key.json.enc
-            gcloud auth activate-service-account $GCLOUD_SERVICE_ACCOUNT --key-file ./.secret/secret-key.json.enc
+            export GOOGLE_APPLICATION_CREDENTIALS=`pwd`/.secret/deep-track-staging-d526e462a31a.json
+            gcloud auth activate-service-account $GCLOUD_SERVICE_ACCOUNT --key-file ./.secret/deep-track-staging-d526e462a31a.json
             appcfg.py update --no_cookies --oauth2_access_token $(gcloud auth print-access-token 2> /dev/null) -A $GCLOUD_PROJECT -V ./app/
             gcloud config set project $GCLOUD_PROJECT
