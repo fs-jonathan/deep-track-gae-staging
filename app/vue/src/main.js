@@ -15,6 +15,7 @@ import VueMoment from 'vue-moment'
 import VueRouter from 'vue-router'
 
 import VueElementLoading from 'vue-element-loading'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -30,5 +31,6 @@ Vue.use(VueRouter)
 Vue.component('VueElementLoading', VueElementLoading)
 
 new Vue({
-  render: h => h(App),
+  store,
+  render: h => h(App)
 }).$mount('#app')
