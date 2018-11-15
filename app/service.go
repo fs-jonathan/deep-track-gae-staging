@@ -35,12 +35,12 @@ type DetailRequest struct {
 
 func init() {
 	// 検証用
-	e.GET("/get", getRecords)
-	e.GET("/set", setRecords)
+	// e.GET("/get", getRecords)
+	// e.GET("/set", setRecords)
 
 	e.POST("/getReport", getReport)
 	e.POST("/getDetail", getDetail)
-	e.GET("/getJson", getDetail)
+	// e.GET("/getJson", getDetail)
 
 	rand.Seed(time.Now().UnixNano())
 }
