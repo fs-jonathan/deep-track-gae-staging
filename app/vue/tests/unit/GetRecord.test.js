@@ -21,6 +21,11 @@ describe('GetRecord.vue', () => {
       localVue,
       stubs: {
         BField: true
+      },
+      mocks: {
+        $axios: {
+          post: () => Promise.resolve({ data: 'value' })
+        }
       }
     })
     expect(wrapper.isVueInstance()).toBeTruthy()

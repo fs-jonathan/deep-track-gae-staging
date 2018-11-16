@@ -13,7 +13,12 @@ describe('ShowRecord.vue', () => {
   it('renders correctly', () => {
     const wrapper = shallowMount(ShowRecord, {
       localVue,
-      router
+      router,
+      mocks: {
+        $axios: {
+          post: () => Promise.resolve({ data: 'value' })
+        }
+      }
     })
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
