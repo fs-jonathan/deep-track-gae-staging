@@ -3,7 +3,6 @@ import GetRecord from '@/components/GetRecord.vue'
 import VueElementLoading from 'vue-element-loading'
 import VCalendar from 'v-calendar'
 import BootstrapVue from 'bootstrap-vue'
-import VueMoment from 'vue-moment'
 
 const localVue = createLocalVue()
 localVue.use(VCalendar)

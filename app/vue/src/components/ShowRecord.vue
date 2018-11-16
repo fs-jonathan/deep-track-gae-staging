@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import DetailRow from './DetailRow'
 
 export default {
@@ -38,7 +37,7 @@ export default {
     getJson: function(id) {
       this.loading = true
 
-      axios.post('/getDetail', { "message": id })
+      this.$axios.post('/getDetail', { "message": id })
            .then(response => {
              this.results = response.data;
            })
@@ -53,11 +52,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.arrow {
-  width: 12px;
-  height: 12px;
-}
-</style>

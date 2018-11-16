@@ -11,7 +11,6 @@ const router = new VueRouter()
 
 describe('ShowRecord.vue', () => {
   it('renders correctly', () => {
-    const msg = 'new message'
     const wrapper = shallowMount(ShowRecord, {
       localVue,
       router

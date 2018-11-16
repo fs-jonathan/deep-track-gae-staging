@@ -9,24 +9,9 @@
 </template>
 
 <script>
-import VueRouter from 'vue-router'
-import axios from 'axios'
 import $ from 'liff'
 
-import Login from './components/Login.vue'
-import GetRecord from './components/GetRecord.vue'
-import ShowRecord from './components/ShowRecord.vue'
-
-const router = new VueRouter({
-  routes: [
-    { path: '/login', component: Login },
-    { path: '/getRecord', component: GetRecord },
-    { path: '/showRecord/:index', name: 'ShowRecord', component: ShowRecord }
-  ]
-})
-
 export default {
-  router,
   name: 'app',
   data: () => ({
     loading: false,
@@ -52,7 +37,7 @@ export default {
         const userId = data.context.userId;
         this.loading = true
 
-        axios.post('/loginLiff', { "lineUserId": userId })
+        this.$axios.post('/loginLiff', { "lineUserId": userId })
              .then(() => {
                this.showData();
              })
@@ -67,10 +52,10 @@ export default {
       }
     },
     showLogin: function() {
-      router.replace('/login');
+      this.$router.replace('/login');
     },
     showData: function() {
-      router.replace('/getRecord');
+      this.$router.replace('/getRecord');
     }
   }
 }
