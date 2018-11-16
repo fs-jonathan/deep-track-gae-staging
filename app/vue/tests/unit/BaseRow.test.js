@@ -9,6 +9,7 @@ describe('HelloWorld.vue', () => {
         title: msg,
         cost: 0,
         compare: 1,
+        rate: 1,
         id: 2
       } }
     })
