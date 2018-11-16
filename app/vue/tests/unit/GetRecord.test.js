@@ -10,9 +10,10 @@ localVue.use(BootstrapVue)
 localVue.component('VueElementLoading', VueElementLoading)
 
 describe('GetRecord.vue', () => {
-  it('renders correctly', () => {
+  it('renders correctly', async () => {
     const msg = 'new message'
     const wrapper = shallowMount(GetRecord, {
+      attachToDocument: true,
       propsData: { result: {
         title: msg,
         cost: 0,
