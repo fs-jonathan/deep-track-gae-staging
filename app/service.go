@@ -22,8 +22,6 @@ type DataStore struct {
 
 type Report struct {
 	Id       int     `json:"id"`
-	Title    string  `json:"title"`    // TODO: 削除予定
-	Subtitle string  `json:"subtitle"` // TODO: 削除予定
 	Cost     float64 `json:"cost"`
 	Compare  float64 `json:"compare"`
 	Rate     float64 `json:"rate"`
@@ -78,42 +76,36 @@ func getDetail(c echo.Context) error {
 	// 見積もり収益額
 	reportRevenue := new(Report)
 	reportRevenue.Id = 6
-	reportRevenue.Title = "見積もり収益額"
 	reportRevenue.Cost = float64(result.Revenue)
 	records = append(records, *reportRevenue)
 
 	// ページビュー
 	reportPageView := new(Report)
 	reportPageView.Id = 7
-	reportPageView.Title = "ページビュー"
 	reportPageView.Cost = float64(result.PageView)
 	records = append(records, *reportPageView)
 
 	// 表示回数
 	reportViewCount := new(Report)
 	reportViewCount.Id = 8
-	reportViewCount.Title = "表示回数"
 	reportViewCount.Cost = float64(result.ViewCount)
 	records = append(records, *reportViewCount)
 
 	// ページCTR
 	reportClickCount := new(Report)
 	reportClickCount.Id = 9
-	reportClickCount.Title = "ページCTR"
 	reportClickCount.Cost = result.CtRate
 	records = append(records, *reportClickCount)
 
 	// クリック率
 	reportClickRate := new(Report)
 	reportClickRate.Id = 10
-	reportClickRate.Title = "クリック率"
 	reportClickRate.Cost = result.ClickRate
 	records = append(records, *reportClickRate)
 
 	// カバレッジ
 	reportCoverage := new(Report)
 	reportCoverage.Id = 11
-	reportCoverage.Title = "カバレッジ"
 	reportCoverage.Cost = result.Coverage
 	records = append(records, *reportCoverage)
 
@@ -138,8 +130,6 @@ func getReport(c echo.Context) error {
 
 	reportToday := new(Report)
 	reportToday.Id = 1
-	reportToday.Title = "本日"
-	reportToday.Subtitle = "（現時点まで）"
 
 	todayQuery := datastore.NewQuery("DataStore").Filter("dateTime >", timeYesterday).Filter("dateTime <=", timeNow)
 
@@ -161,8 +151,6 @@ func getReport(c echo.Context) error {
 
 	reportYesterday := new(Report)
 	reportYesterday.Id = 2
-	reportYesterday.Title = "昨日"
-	reportYesterday.Subtitle = "先週と同じ曜日との比較"
 
 	yesterdayQuery := datastore.NewQuery("DataStore").Filter("dateTime >", twoDaysAgo).Filter("dateTime <=", timeYesterday)
 
@@ -189,8 +177,6 @@ func getReport(c echo.Context) error {
 
 	reportThisMonth := new(Report)
 	reportThisMonth.Id = 3
-	reportThisMonth.Title = "今月（現時点まで）"
-	reportThisMonth.Subtitle = "先月の同じ日との比較"
 
 	thisMonthQuery := datastore.NewQuery("DataStore").Filter("dateTime >", lastMonth).Filter("dateTime <=", timeNow)
 
@@ -213,8 +199,6 @@ func getReport(c echo.Context) error {
 
 	reportLastMonth := new(Report)
 	reportLastMonth.Id = 4
-	reportLastMonth.Title = "今月（現時点まで）"
-	reportLastMonth.Subtitle = "先月の同じ日との比較"
 
 	lastMonthQuery := datastore.NewQuery("DataStore").Filter("dateTime >", twoMonthsAgo).Filter("dateTime <=", lastMonth)
 
@@ -235,7 +219,6 @@ func getReport(c echo.Context) error {
 	// 全期間
 	reportAll := new(Report)
 	reportAll.Id = 5
-	reportAll.Title = "全期間"
 
 	allQuery := datastore.NewQuery("DataStore")
 

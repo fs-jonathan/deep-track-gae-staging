@@ -10,13 +10,13 @@ exports[`HelloWorld.vue renders correctly 1`] = `
     <span
       class="text-sm leading-tight"
     >
-      new message
+      昨日
     </span>
      
     <span
       class="text-xs leading-tight text-grey-dark sm:inline"
     >
-      
+      先週と同じ曜日の比較
     </span>
   </div>
    
