@@ -12,5 +12,6 @@ describe('DetailRow.vue', () => {
       } }
     })
     expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.element).toMatchSnapshot()
   })
 })

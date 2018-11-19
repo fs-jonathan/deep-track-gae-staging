@@ -14,5 +14,6 @@ describe('HelloWorld.vue', () => {
       } }
     })
     expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.element).toMatchSnapshot()
   })
 })

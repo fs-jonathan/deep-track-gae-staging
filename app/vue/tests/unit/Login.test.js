@@ -10,5 +10,6 @@ describe('Login.vue', () => {
       } }
     })
     expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.element).toMatchSnapshot()
   })
 })

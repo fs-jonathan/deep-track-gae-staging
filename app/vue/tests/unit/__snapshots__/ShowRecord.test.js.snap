@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShowRecord.vue renders correctly 1`] = `
+<div
+  class="showRecord"
+>
+  <div
+    id="loader"
+  >
+    <vueelementloading-stub
+      isfullscreen="true"
+      spinner="bar-fade-scale"
+    />
+  </div>
+   
+  <!---->
+   
+  <div
+    id="content"
+    style="display: block;"
+  >
+    <div>
+      <detailrow-stub
+        result="[object Object]"
+      />
+    </div>
+    <div>
+      <detailrow-stub
+        result="[object Object]"
+      />
+    </div>
+    <div>
+      <detailrow-stub
+        result="[object Object]"
+      />
+    </div>
+    <div>
+      <detailrow-stub
+        result="[object Object]"
+      />
+    </div>
+    <div>
+      <detailrow-stub
+        result="[object Object]"
+      />
+    </div>
+    <div>
+      <detailrow-stub
+        result="[object Object]"
+      />
+    </div>
+  </div>
+</div>
+`;
