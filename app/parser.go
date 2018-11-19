@@ -18,10 +18,6 @@ type Record struct {
 	Rate     float64 `json:"rate"`
 }
 
-type Message struct {
-	Message int `json:"message"`
-}
-
 func init() {
 	// Route => handler
 	e.POST("/getStaticJson", jsonWriter)

@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
+import './plugins/axios'
+import router from './router.js'
 
 // BootstrapVueの読み込み
 import BootstrapVue from 'bootstrap-vue'
@@ -12,9 +14,8 @@ import VCalendar from 'v-calendar'
 import 'v-calendar/lib/v-calendar.min.css'
 
 import VueMoment from 'vue-moment'
-import VueRouter from 'vue-router'
-
 import VueElementLoading from 'vue-element-loading'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -25,10 +26,12 @@ Vue.use(VCalendar, {
   paneWidth: 300
 })
 Vue.use(VueMoment)
-Vue.use(VueRouter)
 
 Vue.component('VueElementLoading', VueElementLoading)
 
 new Vue({
-  render: h => h(App),
+  store,
+  axios: Plugin.$axios,
+  router: router,
+  render: h => h(App)
 }).$mount('#app')

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login.vue renders correctly 1`] = `
+<div
+  class="login"
+  result="[object Object]"
+>
+  <h1>
+    
+  </h1>
+</div>
+`;

@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelloWorld.vue renders correctly 1`] = `
+<div
+  class="bg-white hover:bg-grey-light m-3 max-w-sm shadow-md rounded-md overflow-hidden"
+>
+  <div
+    class="text-left p-1 sm:text-left sm:flex-grow"
+  >
+    <span
+      class="text-sm leading-tight"
+    >
+      new message
+    </span>
+     
+    <span
+      class="text-xs leading-tight text-grey-dark sm:inline"
+    >
+      
+    </span>
+  </div>
+   
+  <div
+    class="p-1"
+  >
+    <strong
+      class="text-xl leading-tight"
+    >
+      ¥0
+    </strong>
+  </div>
+   
+  <div
+    class="text-left sm:text-left sm:flex-grow p-1"
+  >
+    <img
+      class="w-2"
+      src="../assets/icon_arrow_right.png"
+    />
+     
+    <span
+      class="text-xs text-grey-dark m-1"
+    >
+      ¥1(1%)
+    </span>
+  </div>
+</div>
+`;

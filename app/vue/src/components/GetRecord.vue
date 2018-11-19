@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import moment from 'moment'
 import BaseRow from './BaseRow'
 
@@ -60,7 +59,7 @@ export default {
     getJson: function() {
       this.loading = true
 
-      axios.post('/getReport')
+      this.$axios.post('/getReport')
            .then(response => {
              this.results = response.data;
            })
@@ -75,3 +74,6 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+</style>

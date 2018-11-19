@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GetRecord.vue renders correctly 1`] = `
+<div
+  class="getRecord"
+  result="[object Object]"
+>
+  <div
+    id="loader"
+  >
+    <vueelementloading-stub
+      isfullscreen="true"
+      spinner="bar-fade-scale"
+    />
+  </div>
+   
+  <!---->
+   
+  <div
+    class="control border-b m-3"
+    id="calendar"
+  >
+    <vdatepicker-stub
+      inputprops="[object Object]"
+      mode="range"
+      popoveralign="left"
+      popovercontentoffset="10"
+      popoverdirection="bottom"
+      popovervisibility="hover"
+      showcaps="true"
+      showdaypopover="true"
+      themestyles="[object Object]"
+      tintcolor="#66B3CC"
+      value="[object Object]"
+    >
+      <bfield-stub>
+        <binput-stub
+          icon="calendar"
+          rounded=""
+          type="text"
+        />
+      </bfield-stub>
+    </vdatepicker-stub>
+  </div>
+   
+  <div
+    id="content"
+    style="display: block;"
+  >
+    <div>
+      <row-stub
+        result="[object Object]"
+      />
+    </div>
+    <div>
+      <row-stub
+        result="[object Object]"
+      />
+    </div>
+    <div>
+      <row-stub
+        result="[object Object]"
+      />
+    </div>
+    <div>
+      <row-stub
+        result="[object Object]"
+      />
+    </div>
+    <div>
+      <row-stub
+        result="[object Object]"
+      />
+    </div>
+  </div>
+</div>
+`;
